@@ -1,0 +1,340 @@
+<style>
+html {
+  scroll-behavior: smooth;
+}
+
+/* beginner styles at bottom */
+
+body {
+  	--color-primary: #ed7a31;
+    --color-secondary: #995522;
+    --color-text-body: #ffffff;
+    --color-text-nav: #000000;
+    --color-text-nav-hover: #ffffff;
+  	--color-text-muted: #cccccc;
+    --color-background: #000000;
+    --color-surface-primary: #222222;
+    --color-surface-secondary: #111111;
+    --color-badge-bg: #000000;
+  	--color-badge-text: #ffffff;
+  	--color-beginner-tag: #41aaff;
+    --color-easy-tag: #33cc55;
+    --color-medium-tag: #ffc000;
+    --color-hard-tag: #ff4040;
+    --color-extreme-tag: #cc66ee;
+  	/* challenge popup close button colors must be defined manually */
+ 
+	background-color: var(--color-background) !important;
+  	color: var(--color-text-body) !important;
+  	font-family: "Helvetica Neue", Arial, sans-serif; /* fonts */
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/themes/core-beta/static/webfonts/helveticaneue.eot");
+  src: url("/themes/core-beta/static/webfonts/helveticaneue.eot?#iefix") format("embedded-opentype"), url("/themes/core-beta/static/webfonts/helveticaneue.woff") format("truetype"), url("/themes/core-beta/static/webfonts/helveticaneue.woff2") format("woff"), url("/themes/core-beta/static/webfonts/helveticaneue.ttf") format("woff2"),
+    url("/themes/core-beta/static/webfonts/helveticaneue.svg#Helvetica Neue") format("svg");
+}
+  
+#home h1 {
+  font-size: 5rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  font-family: Consolas, ui-monospace, monospace;
+}
+#home h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--color-primary);
+    font-family: Consolas, ui-monospace, monospace;
+}
+h1, h2, h3, h4, h5 {
+	font-family: Consolas, ui-monospace, monospace !important;
+  	font-weight: bold;
+  	color: var(--color-primary);
+}
+.larger-text h1 {
+	font-size: 3rem !important;
+}
+.larger-text h2 {
+	font-size: 2.5rem !important;
+}
+.larger-text {
+	font-size: 1.25rem !important;
+    line-height: 1.2;
+}
+.max-100 {
+  max-height: 100%;
+  max-width: 100%;
+}
+:not(i) {
+	font-family: "Helvetica Neue", Arial, sans-serif; /* fonts */
+}
+.text-muted {
+  	color: var(--color-text-muted) !important;
+}
+.navbar {
+	background-color: var(--color-primary) !important; /* navbar */
+}
+.jumbotron h1,
+.jumbotron h2,
+.jumbotron h3 {
+    font-weight: bold !important;
+	color: var(--color-text-nav) !important;
+}
+.jumbotron .text-white {
+  	color: var(--color-text-nav) !important;
+}
+.category-header, .challenge-name, .challenge-value {
+	font-weight: bold !important;
+}
+.modal-content {
+  	background-color: var(--color-surface-primary) !important; /* challenge popups */
+}
+.jumbotron {
+	background-color: var(--color-primary) !important; /* page header */
+  	color: var(--color-text-nav);
+}
+.table, .table td,
+.table tr:nth-child(even),
+.table tr:nth-child(odd),
+.table-striped>tbody>tr:nth-of-type(odd)>*,
+.table-striped>tbody>tr:nth-of-type(even)>* {
+    color: var(--color-text-body) !important;
+}
+tr:nth-child(even) {
+    color: #f2f2f2;
+}
+a {
+  	color: var(--color-primary) !important;
+}
+a:hover {
+  	color: var(--color-secondary) !important
+}
+.btn-dark {
+	background-color: var(--color-background) !important; /* challenge buttons */
+  	border-width: 4px !important;
+  	border-style: solid !important;
+  	border-color: var(--color-primary) !important;
+  	box-shadow: none !important;
+    font-weight: bold !important;
+}
+.btn-dark:hover {
+	background-color: var(--color-surface-primary) !important; /* challenge buttons */
+    border-width: 4px !important;
+  	border-color: var(--color-primary) !important;
+}
+.btn-dark:active {
+	background-color: var(--color-surface-primary) !important; /* challenge buttons */
+    border-width: 4px !important;
+  	border-color: var(--color-primary) !important;
+}
+.challenge-solved {
+	background-color: var(--color-primary) !important; /* solved challenge */
+    border-color: var(--color-primary) !important;
+    border-width: 4px !important;
+    border-style: solid !important;
+  	opacity: 1.0 !important;
+  	color: var(--color-background) !important;
+}
+.challenge-solved:active {
+	background-color: var(--color-secondary) !important; /* solved challenge */
+    border-color: var(--color-secondary) !important;
+    border-width: 4px !important;
+  	opacity: 1.0 !important;
+}
+.challenge-solved:hover {
+	background-color: var(--color-secondary) !important; /* solved challenge */
+    border-color: var(--color-secondary) !important;
+    border-width: 4px !important;
+  	opacity: 1.0 !important;
+}
+.challenge-solved:focus {
+    background-color: var(--color-secondary) !important; /* solved challenge */
+    border-color: var(--color-secondary) !important;
+    border-width: 4px !important;
+  	opacity: 1.0 !important;
+  	box-shadow: none !important;
+}
+.btn-primary,
+.btn-info,
+.btn-outline-secondary {
+  	background-color: var(--color-primary) !important; /* generic buttons */
+  	color: var(--color-background) !important;
+  	border: none !important;
+}
+.btn-primary:hover,
+.btn-info:hover,
+.btn-outline-secondary:hover {
+  	background-color: var(--color-secondary) !important; /* generic buttons */
+  	color: var(--color-background) !important;
+  	border: none !important;
+}
+.btn-primary:active,
+.btn-info:active,
+.btn-outline-secondary:active {
+  	background-color: var(--color-secondary) !important; /* generic buttons */
+  	color: var(--color-background) !important;
+  	border: none !important;
+}
+.btn-primary:focus,
+.btn-info:focus,
+.btn-outline-secondary:focus {
+  	background-color: var(--color-secondary) !important; /* generic buttons */
+  	color: var(--color-background) !important;
+  	border: none !important;
+  	box-shadow: none !important;
+}
+.modal-body .btn-close,
+.modal-header .btn-close { /* challenge popup close button */
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ed7a31'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+  	opacity: 1.0 !important;
+}
+.modal-body .btn-close:hover,
+.modal-header .btn-close:hover {
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23995522'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+  	opacity: 1.0 !important;
+}
+input, .form-control {
+  	background-color: var(--color-surface-primary) !important;
+  	color: var(--color-text-muted) !important;
+  	border-color: var(--color-text-muted) !important;
+  	box-shadow: none !important;
+}
+input:active, .form-control:active {
+  	background-color: var(--color-surface-secondary) !important;
+  	color: var(--color-text-muted) !important;
+    border-color: var(--color-text-muted) !important;
+  	box-shadow: none !important;
+}
+input:focus, .form-control:focus {
+  	background-color: var(--color-surface-secondary) !important;
+  	color: var(--color-text-muted) !important;
+    border-color: var(--color-text-muted) !important;
+  	box-shadow: none !important;
+}
+button.nav-link {
+  	color: var(--color-primary) !important;
+}
+button.nav-link:hover {
+    color: var(--color-secondary) !important;
+}
+button.nav-link.active {
+  	background-color: var(--color-primary) !important;
+    color: var(--color-text-nav) !important;
+}
+.jumbotron .bg-primary, .jumbotron .bg-secondary { /* badges that show team name/country in user profile */
+	background-color: var(--color-badge-bg) !important;
+  	color: var(--color-badge-text) !important;
+}
+.nav-tabs {
+  	border-bottom-color: var(--color-primary) !important;
+}
+.nav-tabs .nav-link {
+  	background-color: transparent !important;
+  	border-color: transparent !important;
+    color: var(--color-text-body) !important;
+}
+.nav-tabs .nav-link:hover {
+  	background-color: transparent !important;
+  	border-color: var(--color-primary) !important;
+    color: var(--color-text-body) !important;
+}
+.nav-tabs .active {
+  	background-color: var(--color-primary) !important;
+  	border-color: var(--color-primary) !important;
+    color: var(--color-text-nav) !important;
+}
+.nav-tabs .active:hover {
+  	background-color: var(--color-primary) !important;
+  	border-color: var(--color-primary) !important;
+    color: var(--color-text-nav) !important;
+}
+.navbar-dark .navbar-toggler {
+  	color: var(--color-text-nav) !important;
+  	border: none !important;
+  	border-color: transparent !important;
+}
+.navbar-dark .navbar-toggler-icon { /* mobile navbar toggle icon color override */
+  	background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 1.0%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+a { /* disable smooth transitions for links */
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
+.navbar .navbar-brand,
+.navbar .nav-item,
+.navbar .nav-link {
+  color: var(--color-text-nav) !important;
+  font-weight: bold !important;
+}
+.navbar .navbar-brand:hover,
+.navbar .nav-item:hover,
+.navbar .nav-link:hover {
+  color: var(--color-text-nav-hover) !important;
+}
+ul {
+  margin: 0;
+}
+ul.dashed {
+  list-style-type: none;
+}
+ul.dashed > li {
+  text-indent: -5px;
+}
+ul.dashed > li:before {
+  content: "-";
+  text-indent: -5px;
+}
+.modal-content .nav-link:hover {
+  cursor: pointer; /* core-beta fix */
+}
+#score-graph {
+	background-color: #ffffff;
+  	border-radius: 20px;
+}
+
+ /* beginner */
+.challenge-button {
+  position: relative;
+}
+  
+.challenge-button[data-difficulty]::after {
+  position: absolute;
+  content: attr(data-difficulty);
+  bottom: 5px;
+  right: 5px;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  background-color: #5b7290!important;
+  color: #000000;
+}
+  
+.challenge-button.tag-beginner[data-difficulty]::after {
+  background-color: var(--color-beginner-tag) !important;
+}
+
+.challenge-button.tag-easy[data-difficulty]::after {
+  background-color: var(--color-easy-tag) !important;
+}
+ 
+.challenge-button.tag-medium[data-difficulty]::after {
+  background-color: var(--color-medium-tag) !important;
+}
+.challenge-button.tag-hard[data-difficulty]::after {
+  background-color: var(--color-hard-tag) !important;
+}
+.challenge-button.tag-extreme[data-difficulty]::after {
+  background-color: var(--color-extreme-tag) !important;
+}
+</style>
