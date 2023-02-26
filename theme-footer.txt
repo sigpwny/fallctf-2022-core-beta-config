@@ -1,0 +1,34 @@
+<script>
+
+function waitForElm(selector) {
+    return new Promise(resolve => {
+        if (document.querySelector(selector)) {
+            return resolve(document.querySelector(selector));
+        }
+
+        const observer = new MutationObserver(mutations => {
+            if (document.querySelector(selector)) {
+                resolve(document.querySelector(selector));
+                observer.disconnect();
+            }
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    });
+}
+if (window.location.href.indexOf('challenges') > -1) {
+  waitForElm("p[x-text='c.name']").then(x => {
+    let tags = Array.from(document.querySelectorAll("p[x-text='c.name']"));
+    CTFd.pages.challenges.getChallenges().then(chals => {
+      let mappings = chals.map((chal, i) => [chal.tags.map(t => t.value), tags.find(e => e.textContent == chal.name)?.parentElement?.parentElement]).filter(x => x[1])
+      for ([tags, button] of mappings) {
+        tags.forEach(tag => {button.classList.add(`tag-${tag}`); if (['beginner', 'easy', 'medium', 'hard', 'extreme'].includes(tag)) {button.setAttribute('data-difficulty', tag)}})
+      }
+    })
+  })
+}
+
+</script>
