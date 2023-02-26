@@ -2,6 +2,8 @@
 
 > Config and CSS styles used with CTFd's core-beta theme for Fall CTF 2022
 
+![Fall CTF 2022 CTFd](./image.png)
+
 For Fall CTF 2022, we used CTFd as our backend along with CTFd's [core-beta](https://github.com/CTFd/core-beta) theme.
 
 1. Import the core-beta theme into CTFd
