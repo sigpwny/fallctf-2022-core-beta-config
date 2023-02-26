@@ -1,0 +1,6 @@
+{
+  "challenge_window_size": "norm",
+  "challenge_category_order": "function compare(a, b) {\r\n  const cat = [\r\n    \"Misc\",\r\n    \"John Deere\",\r\n    \"Web\", \r\n    \"OSINT\", \r\n    \"Jail\",\r\n    \"Crypto\",\r\n    \"Rev\",\r\n    \"Pwn\"\r\n  ];\r\n\r\n  // Throw invalid queries to the bottom\r\n  let a_idx = cat.indexOf(a);\r\n  a_idx = a_idx >= 0 ? a_idx : Number.MAX_VALUE;\r\n  let b_idx = cat.indexOf(b);\r\n  b_idx = b_idx >= 0 ? b_idx : Number.MAX_VALUE;\r\n\r\n  // sort by predefined order\r\n\r\n  if (a_idx < b_idx) return -1;\r\n  if (a_idx > b_idx) return 1;\r\n\r\n  return 0;\r\n}",
+  "challenge_order": "function compare(a, b) {\r\n  const priority = {'beginner': 1, 'easy': 5, 'medium': 10, 'hard': 100, 'extreme': 1000};\r\n  const a_tag_priority = Math.min(...(a.tags.map(v => priority[v.value] || Number.MAX_VALUE)));\r\n  const b_tag_priority = Math.min(...(b.tags.map(v => priority[v.value] || Number.MAX_VALUE)));\r\n  // sort by tag\r\n  if (a_tag_priority < b_tag_priority) return -1;\r\n  if (a_tag_priority > b_tag_priority) return 1;\r\n\r\n  // sort by points\r\n  // if (a.value < b.value) return -1;\r\n  // if (a.value > b.value) return 1;\r\n\r\n  // sort by name\r\n  if (a.name < b.name) return -1;\r\n  if (a.name > b.name) return 1;\r\n\r\n  return 0;\r\n}",
+  "use_builtin_code_highlighter": false
+}
